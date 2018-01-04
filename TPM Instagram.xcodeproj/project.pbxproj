@@ -14,6 +14,7 @@
 		BB9B85C11FFE6EB2002A0ECF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9B85C01FFE6EB2002A0ECF /* LoginViewController.swift */; };
 		BB9B85C31FFE748A002A0ECF /* FeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9B85C21FFE748A002A0ECF /* FeedsViewController.swift */; };
 		BB9B85C51FFE7D81002A0ECF /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9B85C41FFE7D81002A0ECF /* UserProfileViewController.swift */; };
+		BB9B85C81FFE86E4002A0ECF /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9B85C71FFE86E4002A0ECF /* PostCell.swift */; };
 		EB75E4B124BB9BB12C41E44F /* Pods_TPM_Instagram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6FBC0A49A46F4CF0B0FD9A2 /* Pods_TPM_Instagram.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +31,7 @@
 		BB9B85C01FFE6EB2002A0ECF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BB9B85C21FFE748A002A0ECF /* FeedsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsViewController.swift; sourceTree = "<group>"; };
 		BB9B85C41FFE7D81002A0ECF /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		BB9B85C71FFE86E4002A0ECF /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 		BB8DF23E1FFE27CA0025B366 /* TPM Instagram */ = {
 			isa = PBXGroup;
 			children = (
+				BB9B85C61FFE86CC002A0ECF /* Views */,
 				BB9B85BF1FFE683C002A0ECF /* ViewControllers */,
 				BB8DF23F1FFE27CA0025B366 /* AppDelegate.swift */,
 				BB8DF2431FFE27CA0025B366 /* Main.storyboard */,
@@ -100,6 +103,14 @@
 				BB9B85C41FFE7D81002A0ECF /* UserProfileViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		BB9B85C61FFE86CC002A0ECF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BB9B85C71FFE86E4002A0ECF /* PostCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,6 +248,7 @@
 				BB9B85C51FFE7D81002A0ECF /* UserProfileViewController.swift in Sources */,
 				BB9B85C11FFE6EB2002A0ECF /* LoginViewController.swift in Sources */,
 				BB8DF2401FFE27CA0025B366 /* AppDelegate.swift in Sources */,
+				BB9B85C81FFE86E4002A0ECF /* PostCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

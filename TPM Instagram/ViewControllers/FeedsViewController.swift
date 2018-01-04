@@ -12,6 +12,10 @@ import Parse
 
 class FeedsViewController: UIViewController {
     
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    
     var posts : [PFObject] = []
 
     override func viewDidLoad() {
