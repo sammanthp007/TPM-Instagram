@@ -9,6 +9,7 @@
 import UIKit
 
 import Parse
+import CameraManager
 
 class ChoosePhotoFromCameraViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -31,9 +32,17 @@ class ChoosePhotoFromCameraViewController: UIViewController, UIImagePickerContro
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
-        picker.delegate = self
-        picker.sourceType = .camera
-        present(picker, animated:true, completion: nil)
+        let cameraManager = CameraManager()
+        cameraManager.addPreviewLayerToView(self.view)
+        cameraManager.showAccessPermissionPopupAutomatically = true
+        
+        cameraManager.cameraDevice = .back
+        cameraManager.shouldEnableTapToFocus = true
+        cameraManager.shouldEnablePinchToZoom = true
+        
+//        picker.delegate = self
+//        picker.sourceType = .camera
+//        present(picker, animated:true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {

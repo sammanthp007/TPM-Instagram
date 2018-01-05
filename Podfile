@@ -7,7 +7,7 @@ target 'TPM Instagram' do
 
   # Pods for TPM Instagram
   pod 'AlamofireImage', '~> 3.3'
-  pod 'CameraManager', '~> 4.0'
+  pod 'CameraManager', '~> 3.2'
   pod 'Parse'
   pod ‘ParseUI’
   post_install do |installer|
