@@ -12,9 +12,7 @@ import Parse
 
 class FeedsViewController: UIViewController {
     
-    
     @IBOutlet weak var collectionView: UICollectionView!
-    
     
     var posts : [PFObject] = []
 
@@ -41,6 +39,9 @@ class FeedsViewController: UIViewController {
                 NSAttributedStringKey.shadow : shadow
             ]
         }
+        
+        // For collection View
+        collectionView.dataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,6 +76,7 @@ class FeedsViewController: UIViewController {
     }
     
 
+    
     /*
     // MARK: - Navigation
 
@@ -86,3 +88,23 @@ class FeedsViewController: UIViewController {
     */
 
 }
+
+extension FeedsViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if self.posts.count != 0 {
+            return posts.count
+        } else {
+            return 0
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "postCell", for: indexPath) as! PostCell
+        
+        
+        
+        return cell
+
+    }
+}
+
