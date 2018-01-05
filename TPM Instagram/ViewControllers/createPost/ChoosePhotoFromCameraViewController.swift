@@ -31,11 +31,9 @@ class ChoosePhotoFromCameraViewController: UIViewController, UIImagePickerContro
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
-        let vc = UIImagePickerController()
-        vc.delegate = self
-        vc.allowsEditing = true
-        vc.sourceType = .photoLibrary
-        present(vc, animated: true, completion: nil)
+        picker.delegate = self
+        picker.sourceType = .camera
+        present(picker, animated:true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -52,9 +50,10 @@ class ChoosePhotoFromCameraViewController: UIViewController, UIImagePickerContro
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        print ("Cancled picking")
+        
         dismiss(animated: true, completion: { () -> Void in
-            print ("segue to first tab here")
+            self.dismiss(animated: false, completion: nil)
+            
             self.tabBarController?.selectedIndex = 0
         })
     }

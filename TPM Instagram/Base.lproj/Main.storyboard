@@ -264,8 +264,9 @@
                     </tabBar>
                     <connections>
                         <segue destination="Jso-Yh-mco" kind="relationship" relationship="viewControllers" id="RAi-cA-mdh"/>
-                        <segue destination="2sF-DC-1Cv" kind="relationship" relationship="viewControllers" id="8GD-1B-nBz"/>
                         <segue destination="MJp-3s-Lg1" kind="relationship" relationship="viewControllers" id="7Uh-8k-OQx"/>
+                        <segue destination="VGy-Ff-HYc" kind="relationship" relationship="viewControllers" id="SiA-8g-hA2"/>
+                        <segue destination="2sF-DC-1Cv" kind="relationship" relationship="viewControllers" id="8GD-1B-nBz"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RKl-4Q-zOG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -365,10 +366,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="ced-Db-v2R"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="" image="insta_camera_btn" id="TrI-73-RAn"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P0E-P8-VUU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3300" y="2066"/>
+            <point key="canvasLocation" x="1198" y="-733"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WtS-xw-ZCH">
@@ -410,8 +412,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="add-icon" width="30" height="27"/>
+        <image name="add-icon" width="25" height="25"/>
         <image name="feed_tab" width="25" height="25"/>
+        <image name="insta_camera_btn" width="25" height="25"/>
         <image name="profile_tab" width="25" height="25"/>
     </resources>
 </document>
