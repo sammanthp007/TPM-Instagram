@@ -54,15 +54,43 @@ class FeedsViewController: UIViewController {
         layout.itemSize = CGSize(width: widthOfEachItem, height: widthOfEachItem * 1.75)
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 4
+        
+        // Initialize a UIRefreshControl
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
+        // add refresh control to table view
+        self.collectionView.insertSubview(refreshControl, at: 0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        getData()
+        getData(completion: {(success: Bool, error: Error?) -> Void in
+            if success {
+                print ("successfully received data")
+            } else {
+                print (error?.localizedDescription)
+            }
+        })
     }
     
-    func getData() -> Void {
+    // Makes a network request to get updated data
+    // Updates the tableView with the new data
+    // Hides the RefreshControl
+    @objc func refreshControlAction(_ refreshControl: UIRefreshControl) {
+        getData(completion: {(success: Bool, error: Error?) -> Void in
+            if success {
+                print ("successfully received data")
+                
+                // Tell the refreshControl to stop spinning
+                refreshControl.endRefreshing()
+            } else {
+                print (error?.localizedDescription)
+            }
+        })
+    }
+    
+    func getData(completion: @escaping (_ success: Bool, _ error: Error?) -> Void) -> Void {
         let query = PFQuery(className: "Post")
         query.order(byDescending: "createdAt")
         query.includeKey("author")
@@ -74,10 +102,12 @@ class FeedsViewController: UIViewController {
                 print("Posts are: ", posts)
                 // do something with the data fetched
                 self.raw_posts = posts
+                completion(true, nil)
                 
             } else {
                 print("Error! : ", error?.localizedDescription ?? "No localized description for error")
                 // handle error
+                completion(false, error)
             }
             self.collectionView.reloadData()
         }
