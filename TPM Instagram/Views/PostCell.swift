@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import AlamofireImage
 
 
 class PostCell: UICollectionViewCell {
@@ -23,5 +23,17 @@ class PostCell: UICollectionViewCell {
     @IBOutlet weak var captionLabel: UILabel!
     
     
-    
+    var post: Post! {
+        didSet {
+            profilePictureIconImageView.af_setImage(withURL: post.userImageUrl as URL)
+            usernameLabel.text = post.username
+            locationLabel.text = post.location
+            postImageView.af_setImage(withURL: post.postImageUrl as URL)
+            likeButtonImageView.image = #imageLiteral(resourceName: "favor-icon")
+            commentButtonImageView.image = #imageLiteral(resourceName: "comment-icon")
+            offlineSaveButtonImageView.image = #imageLiteral(resourceName: "offline-save-icon")
+            numberOfLikesLabel.text = post.favoritesCount as? String
+            captionLabel.text = post.caption
+        }
+    }
 }

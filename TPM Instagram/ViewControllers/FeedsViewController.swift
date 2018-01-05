@@ -14,7 +14,7 @@ class FeedsViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var posts : [PFObject] = []
+    var posts : [Post] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +42,7 @@ class FeedsViewController: UIViewController {
         
         // For collection View
         collectionView.dataSource = self
+        collectionView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,7 +60,7 @@ class FeedsViewController: UIViewController {
         // fetch data asynchronously
         query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) -> Void in
             if let posts = posts {
-                self.posts = posts
+                self.posts = Post.getArrayOfPostsFromPFOjects(dictionaries: posts)
                 print("Posts are: ", posts)
                 // do something with the data fetched
             } else {
@@ -89,7 +90,7 @@ class FeedsViewController: UIViewController {
 
 }
 
-extension FeedsViewController: UICollectionViewDataSource {
+extension FeedsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if self.posts.count != 0 {
             return posts.count
@@ -100,11 +101,10 @@ extension FeedsViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "postCell", for: indexPath) as! PostCell
-        
-        
-        
+        cell.post = self.posts[indexPath.row]
         return cell
-
     }
+    
+    
 }
 
