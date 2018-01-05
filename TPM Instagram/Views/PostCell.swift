@@ -7,6 +7,9 @@
 //
 
 import UIKit
+
+import Parse
+import ParseUI
 import AlamofireImage
 
 
@@ -15,7 +18,7 @@ class PostCell: UICollectionViewCell {
     @IBOutlet weak var profilePictureIconImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
-    @IBOutlet weak var postImageView: UIImageView!
+    @IBOutlet weak var postImageView: PFImageView!
     @IBOutlet weak var likeButtonImageView: UIImageView!
     @IBOutlet weak var commentButtonImageView: UIImageView!
     @IBOutlet weak var offlineSaveButtonImageView: UIImageView!
@@ -28,7 +31,7 @@ class PostCell: UICollectionViewCell {
             profilePictureIconImageView.af_setImage(withURL: post.userImageUrl as URL)
             usernameLabel.text = post.username
             locationLabel.text = post.location
-            postImageView.af_setImage(withURL: post.postImageUrl as URL)
+            postImageView.file = post.postImage
             likeButtonImageView.image = #imageLiteral(resourceName: "favor-icon")
             commentButtonImageView.image = #imageLiteral(resourceName: "comment-icon")
             offlineSaveButtonImageView.image = #imageLiteral(resourceName: "offline-save-icon")

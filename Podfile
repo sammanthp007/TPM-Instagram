@@ -8,6 +8,7 @@ target 'TPM Instagram' do
   # Pods for TPM Instagram
   pod 'AlamofireImage', '~> 3.3'
   pod 'Parse'
+  pod ‘ParseUI’
   post_install do |installer|
     installer.pods_project.targets.each do |target|
       target.build_configurations.each do |config|

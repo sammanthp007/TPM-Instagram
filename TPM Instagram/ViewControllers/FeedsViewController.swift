@@ -9,6 +9,7 @@
 import UIKit
 
 import Parse
+import ParseUI
 
 class FeedsViewController: UIViewController {
     
