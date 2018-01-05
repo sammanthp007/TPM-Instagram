@@ -29,6 +29,8 @@ class PostCell: UICollectionViewCell {
     var post: PFObject! {
         didSet {
             profilePictureIconImageView.file = post["media"] as? PFFile
+            profilePictureIconImageView.loadInBackground()
+            
             usernameLabel.text = (post["author"] as? PFUser)?.username
             locationLabel.text = post["location"] as? String
             
