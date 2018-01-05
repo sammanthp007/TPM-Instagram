@@ -17,67 +17,64 @@ class Post: PFObject, PFSubclassing {
         return "Post"
     }
     
-    var caption: String?
-    var commentsCount: Int = 0
-    var favoritesCount: Int = 0
-    var location: String?
-    var postImage = PFFile.self
-    var favorite: Bool?
-    var idString: String?
+    @NSManaged var media : PFFile
+    @NSManaged var author: PFUser
+    @NSManaged var caption: String?
+    @NSManaged var likesCount: Int
+    @NSManaged var commentsCount: Int
     
-    var postedTimeStamp: NSDate?
+    @NSManaged var location: String?
+    var hasFavorited: Bool?
+    @NSManaged var idString: String
     
-    var user: NSDictionary?
-    var username: String = ""
-    var userImageUrl = NSURL()
+    @NSManaged var postedTimeStamp: NSDate?
+    
+    @NSManaged var authorUsername: String
+    @NSManaged var authorProfileImageFile : PFFile
     
     // for printing purpose only
     var raw_post: PFObject?
     
-    override init() {
-        super.init()
-    }
+//    init(dictionary: PFObject) {
+//        super.init()
+//
+//        raw_post = dictionary
+//
+//        caption = (dictionary["caption"] as? String)!
+//        commentsCount = (dictionary["comments_count"] as? Int) ?? 0
+//        likesCount  = (dictionary["likes_count"] as? Int) ?? 0
+//        location = dictionary["location"] as? String
+//        media = dictionary["media"] as! PFFile
+//        hasFavorited = dictionary["favorited"] as? Bool
+//        idString = dictionary["id_str"] as? String
+//
+//        let timestampString = dictionary["created_at"] as? String
+//        if let timestampString = timestampString {
+//            let formatter = DateFormatter()
+//            formatter.dateFormat = "EEE MMM d HH:mm:ss Z y"
+//            postedTimeStamp = formatter.date(from: timestampString) as NSDate?
+//        }
+//
+//        // the user associated with the post
+//        let userDictionary = dictionary["author"] as! NSDictionary
+//        authorUsername = (userDictionary["user_name"] as? String)!
+//        authorProfileImageFile = (userDictionary["profile_image"] as? PFFile)!
+//
+//
+//    }
     
-    init(dictionary: PFObject) {
-        super.init()
-        
-        raw_post = dictionary
-        
-        caption = dictionary["caption"] as? String
-        commentsCount = (dictionary["comments_count"] as? Int) ?? 0
-        favoritesCount  = (dictionary["favorite_count"] as? Int) ?? 0
-        location = dictionary["location"] as? String
-        postImage = dictionary["post_image"] as! PFFile
-        favorite = dictionary["favorited"] as? Bool
-        idString = dictionary["id_str"] as? String
-
-        let timestampString = dictionary["created_at"] as? String
-        if let timestampString = timestampString {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "EEE MMM d HH:mm:ss Z y"
-            postedTimeStamp = formatter.date(from: timestampString) as NSDate?
-        }
-        
-        // the user associated with the user
-        let userDictionary = dictionary["user"] as! NSDictionary
-        username = (userDictionary["user_name"] as? String)!
-        userImageUrl = NSURL(string: userDictionary["profile_image_url_https"] as! String)!
-
-        
-    }
-    
-    class func getArrayOfPostsFromPFOjects(dictionaries: [PFObject]) -> [Post] {
-        var posts: [Post] = []
-        for dictionary in dictionaries {
-            let post = Post(dictionary: dictionary)
-            posts.append(post)
-        }
-        
-        return posts
-    }
+//    class func getArrayOfPostsFromPFOjects(dictionaries: [PFObject]) -> [Post] {
+//        var posts: [Post] = []
+//        for dictionary in dictionaries {
+//            let post = Post(dictionary: dictionary)
+//            posts.append(post)
+//        }
+//
+//        return posts
+//    }
     
     func printTweetsUser() {
-        print("\(String(describing: user))")
+        print("\(String(describing: author))")
     }
     
     func printAll() {
@@ -93,14 +90,15 @@ class Post: PFObject, PFSubclassing {
      */
     class func postUserImage(image: UIImage?, withCaption caption: String?, withCompletion completion: PFBooleanResultBlock?) {
         // Create Parse object PFObject
-        let post = PFObject(className: "Post")
+        let post = Post()
         
         // Add relevant fields to the object
-        post["media"] = getPFFileFromImage(image: image) // PFFile column type
-        post["user"] = PFUser.current() // Pointer column type that points to PFUser
-        post["caption"] = caption
-        // Save object (following function will save the object in Parse asynchronously)
-        //post.saveInBackground(block: completion)
+        post.media = getPFFileFromImage(image: image)! // PFFile column type
+        post.author = PFUser.current()! // Pointer column type that points to PFUser
+        post.caption = caption
+        post.likesCount = 0
+        post.commentsCount = 0
+        
         post.saveInBackground(block: completion)
     }
     

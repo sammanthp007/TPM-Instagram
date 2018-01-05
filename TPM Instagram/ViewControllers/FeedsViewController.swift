@@ -61,7 +61,7 @@ class FeedsViewController: UIViewController {
         // fetch data asynchronously
         query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) -> Void in
             if let posts = posts {
-                self.posts = Post.getArrayOfPostsFromPFOjects(dictionaries: posts)
+//                self.posts = posts
                 print("Posts are: ", posts)
                 // do something with the data fetched
             } else {

@@ -10,12 +10,15 @@ import UIKit
 
 import Parse
 
+
 class CreatePostViewController: UIViewController {
     
     
     @IBOutlet weak var postImageView: UIImageView!
+    @IBOutlet weak var captionTextField: UITextField!
     
     var postImage: UIImage?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,20 +35,19 @@ class CreatePostViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func upload() -> Void {
-//            MBProgressHUD.showAdded(to: self.view, animated: true)
-        
-            Post.postUserImage(image: postPhotoLabel.image,
-                               withCaption: captionTextFiled.text,
-                               withCompletion: { _ in
-                                //s MBProgressHUD.showAdded(to: self.view, animated: true)
-                                DispatchQueue.main.async {
-                                    self.postPhotoLabel.image = nil
-                                    self.captionTextFiled.text = nil
-//                                    MBProgressHUD.hide(for: self.view, animated: true)
-                                }}
-                
-            )
+    @objc func upload() -> Void {
+//        MBProgressHUD.showAdded(to: self.view, animated: true)
+
+        Post.postUserImage(image: postImage,
+                           withCaption: captionTextField.text,
+                           withCompletion: { (success: Bool, error: Error?) -> Void in
+                            // MBProgressHUD.showAdded(to: self.view, animated: true)
+                            DispatchQueue.main.async {
+                                self.postImageView.image = nil
+                                self.captionTextField.text = nil
+//                                MBProgressHUD.hide(for: self.view, animated: true)
+                            }}
+        )
     }
     
 
