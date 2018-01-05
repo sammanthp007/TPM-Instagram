@@ -132,7 +132,7 @@ class LoginViewController: UIViewController {
         let username = usernameTextField.text! as String
         let password = passwordTextField.text! as String
         
-        if username != "" && password != ""{
+        if username != "" && password != "" {
             login(inp_username : username, inp_password: password)
         }
         else {

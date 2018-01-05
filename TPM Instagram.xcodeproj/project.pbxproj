@@ -16,6 +16,9 @@
 		BB9B85C51FFE7D81002A0ECF /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9B85C41FFE7D81002A0ECF /* UserProfileViewController.swift */; };
 		BB9B85C81FFE86E4002A0ECF /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9B85C71FFE86E4002A0ECF /* PostCell.swift */; };
 		BB9B85CB1FFF1B1B002A0ECF /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9B85CA1FFF1B1B002A0ECF /* Post.swift */; };
+		BB9B85CD1FFF2C82002A0ECF /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9B85CC1FFF2C82002A0ECF /* CreatePostViewController.swift */; };
+		BB9B85D21FFF3287002A0ECF /* ChoosePhotoFromAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9B85D11FFF3287002A0ECF /* ChoosePhotoFromAlbumViewController.swift */; };
+		BB9B85D41FFF3298002A0ECF /* ChoosePhotoFromCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9B85D31FFF3298002A0ECF /* ChoosePhotoFromCameraViewController.swift */; };
 		EB75E4B124BB9BB12C41E44F /* Pods_TPM_Instagram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6FBC0A49A46F4CF0B0FD9A2 /* Pods_TPM_Instagram.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +37,9 @@
 		BB9B85C41FFE7D81002A0ECF /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		BB9B85C71FFE86E4002A0ECF /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		BB9B85CA1FFF1B1B002A0ECF /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		BB9B85CC1FFF2C82002A0ECF /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
+		BB9B85D11FFF3287002A0ECF /* ChoosePhotoFromAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosePhotoFromAlbumViewController.swift; sourceTree = "<group>"; };
+		BB9B85D31FFF3298002A0ECF /* ChoosePhotoFromCameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosePhotoFromCameraViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +107,7 @@
 		BB9B85BF1FFE683C002A0ECF /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				BB9B85CE1FFF2F19002A0ECF /* createPost */,
 				BB9B85C01FFE6EB2002A0ECF /* LoginViewController.swift */,
 				BB9B85C21FFE748A002A0ECF /* FeedsViewController.swift */,
 				BB9B85C41FFE7D81002A0ECF /* UserProfileViewController.swift */,
@@ -122,6 +129,16 @@
 				BB9B85CA1FFF1B1B002A0ECF /* Post.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		BB9B85CE1FFF2F19002A0ECF /* createPost */ = {
+			isa = PBXGroup;
+			children = (
+				BB9B85CC1FFF2C82002A0ECF /* CreatePostViewController.swift */,
+				BB9B85D11FFF3287002A0ECF /* ChoosePhotoFromAlbumViewController.swift */,
+				BB9B85D31FFF3298002A0ECF /* ChoosePhotoFromCameraViewController.swift */,
+			);
+			path = createPost;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,6 +277,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB9B85C31FFE748A002A0ECF /* FeedsViewController.swift in Sources */,
+				BB9B85D41FFF3298002A0ECF /* ChoosePhotoFromCameraViewController.swift in Sources */,
+				BB9B85CD1FFF2C82002A0ECF /* CreatePostViewController.swift in Sources */,
+				BB9B85D21FFF3287002A0ECF /* ChoosePhotoFromAlbumViewController.swift in Sources */,
 				BB9B85C51FFE7D81002A0ECF /* UserProfileViewController.swift in Sources */,
 				BB9B85C11FFE6EB2002A0ECF /* LoginViewController.swift in Sources */,
 				BB9B85CB1FFF1B1B002A0ECF /* Post.swift in Sources */,
