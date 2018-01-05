@@ -45,6 +45,15 @@ class FeedsViewController: UIViewController {
         // For collection View
         collectionView.dataSource = self
         collectionView.delegate = self
+        
+        // update flow layout
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        
+        let cellsPerLine:CGFloat = 1
+        let widthOfEachItem = self.view.frame.size.width // collectionView.frame.size.width / cellsPerLine
+        layout.itemSize = CGSize(width: widthOfEachItem, height: widthOfEachItem * 1.75)
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 4
     }
     
     override func viewWillAppear(_ animated: Bool) {
