@@ -26,17 +26,20 @@ class PostCell: UICollectionViewCell {
     @IBOutlet weak var captionLabel: UILabel!
     
     
-    var post: Post! {
+    var post: PFObject! {
         didSet {
-            profilePictureIconImageView.file = post.authorProfileImageFile
-            usernameLabel.text = post.authorUsername
-            locationLabel.text = post.location
-            postImageView.file = post.media
+            profilePictureIconImageView.file = post["media"] as? PFFile
+            usernameLabel.text = (post["author"] as? PFUser)?.username
+            locationLabel.text = post["location"] as? String
+            
+            postImageView.file = post["media"] as? PFFile
+            self.postImageView.loadInBackground()
+            
             likeButtonImageView.image = #imageLiteral(resourceName: "favor-icon")
             commentButtonImageView.image = #imageLiteral(resourceName: "comment-icon")
             offlineSaveButtonImageView.image = #imageLiteral(resourceName: "offline-save-icon")
-            numberOfLikesLabel.text = "\(post.likesCount)"
-            captionLabel.text = post.caption
+            numberOfLikesLabel.text = post["likesCount"] as? String
+            captionLabel.text = post["caption"] as? String
         }
     }
 }

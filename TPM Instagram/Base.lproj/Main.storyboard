@@ -271,6 +271,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="6Zd-9v-l41">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="60M-B3-q3a">
                                 <rect key="frame" x="16" y="80" width="115" height="115"/>
                                 <constraints>
@@ -297,6 +302,7 @@
                         <viewLayoutGuide key="safeArea" id="qLz-7m-s6u"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="6Zd-9v-l41" id="ThC-aX-8sP"/>
                         <outlet property="captionTextField" destination="bxY-kN-uDp" id="DSm-uG-58v"/>
                         <outlet property="postImageView" destination="60M-B3-q3a" id="dT1-v1-ID1"/>
                     </connections>

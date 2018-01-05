@@ -16,6 +16,7 @@ class FeedsViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var posts : [Post] = []
+    var raw_posts: [PFObject] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,14 +62,15 @@ class FeedsViewController: UIViewController {
         // fetch data asynchronously
         query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) -> Void in
             if let posts = posts {
-//                self.posts = posts
                 print("Posts are: ", posts)
                 // do something with the data fetched
+                self.raw_posts = posts
+                
             } else {
                 print("Error! : ", error?.localizedDescription ?? "No localized description for error")
                 // handle error
             }
-//            self.tableView.reloadData()
+            self.collectionView.reloadData()
         }
     }
 
@@ -93,16 +95,19 @@ class FeedsViewController: UIViewController {
 
 extension FeedsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if self.posts.count != 0 {
-            return posts.count
+        if self.raw_posts.count != 0 {
+            return self.raw_posts.count
         } else {
+            print ("came here")
             return 0
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "postCell", for: indexPath) as! PostCell
-        cell.post = self.posts[indexPath.row]
+        
+       
+        cell.post = self.raw_posts[indexPath.row]
         return cell
     }
     

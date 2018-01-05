@@ -16,6 +16,7 @@ class CreatePostViewController: UIViewController {
     
     @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var captionTextField: UITextField!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var postImage: UIImage?
     
@@ -36,16 +37,15 @@ class CreatePostViewController: UIViewController {
     }
     
     @objc func upload() -> Void {
-//        MBProgressHUD.showAdded(to: self.view, animated: true)
-
+        activityIndicator.startAnimating()
+        
         Post.postUserImage(image: postImage,
                            withCaption: captionTextField.text,
                            withCompletion: { (success: Bool, error: Error?) -> Void in
-                            // MBProgressHUD.showAdded(to: self.view, animated: true)
                             DispatchQueue.main.async {
                                 self.postImageView.image = nil
                                 self.captionTextField.text = nil
-//                                MBProgressHUD.hide(for: self.view, animated: true)
+                                self.activityIndicator.stopAnimating()
                             }}
         )
     }
