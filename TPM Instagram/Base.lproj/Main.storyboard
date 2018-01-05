@@ -209,6 +209,11 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="ZLV-Tq-7Kp">
+                                <rect key="frame" x="169" y="283" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -221,6 +226,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="1X1-Xr-dPa"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="ZLV-Tq-7Kp" id="YfH-R4-liR"/>
                         <outlet property="collectionView" destination="o7Z-bA-jqy" id="0Gl-aY-IN8"/>
                     </connections>
                 </viewController>

@@ -14,6 +14,7 @@ import ParseUI
 class FeedsViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var posts : [Post] = []
     var raw_posts: [PFObject] = []
@@ -65,9 +66,14 @@ class FeedsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
+        activityIndicator.startAnimating()
+        
         getData(completion: {(success: Bool, error: Error?) -> Void in
+            self.activityIndicator.stopAnimating()
+            
             if success {
                 print ("successfully received data")
+                
             } else {
                 print (error?.localizedDescription)
             }
@@ -78,7 +84,9 @@ class FeedsViewController: UIViewController {
     // Updates the tableView with the new data
     // Hides the RefreshControl
     @objc func refreshControlAction(_ refreshControl: UIRefreshControl) {
+        
         getData(completion: {(success: Bool, error: Error?) -> Void in
+            
             if success {
                 print ("successfully received data")
                 
